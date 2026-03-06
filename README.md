@@ -87,20 +87,28 @@ This structure keeps the project modular and easier to maintain as it grows.
 ## Screenshots
 
 ### Homepage
+
 <p align="center">
-<img src="autonecto_website/screenshots/homepage.png" width="800">
+  <img src="screenshots/homepage.png" width="800">
+</p>
 
 ### Services Section
+
 <p align="center">
-<img src="autonecto_website/screenshots/services.png" width="800">
+  <img src="screenshots/services.png" width="800">
+</p>
 
 ### Blog System
+
 <p align="center">
-<img src="autonecto_website/screenshots/blog.png" width="800">
+  <img src="screenshots/blog.png" width="800">
+</p>
 
 ### Contact Page
+
 <p align="center">
-<img src="autonecto_website/screenshots/contact.png" width="800">
+  <img src="screenshots/contact.png" width="800">
+</p>
 
 ---
 
