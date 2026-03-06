@@ -186,6 +186,18 @@ Working on a real business project helped me practice:
 
 ---
 
+## Project Status
+
+This project is actively being developed as the official website for Autonecto Electrics.  
+Some planned features such as service booking and fleet management are currently on hold while the core website functionality is finalized.
+
+## Business Location
+
+Autonecto Electrics  
+📍 17004 Sande Crescent, Graniteside  Harare, Zimbabwe
+
+View on Google Maps:
+https://www.google.com/maps/place/Autonecto+Electrics/@-17.8648206,31.0443502,17z/data=!3m1!4b1!4m6!3m5!1s0x1931a518cb2ed5f5:0xc70842c86575067e!8m2!3d-17.8648206!4d31.0469251!16s%2Fg%2F11mdjmr390?entry=ttu&g_ep=EgoyMDI2MDMwMi4wIKXMDSoASAFQAw%3D%3D
 ## Written by:
 
 **Tadiwanashe Justice Ziyambato**
