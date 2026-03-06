@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}Book a Service — Autonecto Electrics{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/booking.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="booking-page">
+  <div class="booking-card">
+
+    <h1 class="booking-title">Book a Service</h1>
+    <p class="booking-sub">Fill in your details and we’ll confirm your booking shortly.</p>
+
+    <form method="POST" novalidate>
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+
+      <!-- NAME ROW -->
+      <div class="booking-row">
+        <div class="booking-field">
+          <label for="{{ form.first_name.id_for_label }}">First name *</label>
+          {{ form.first_name }}
+          {{ form.first_name.errors }}
+        </div>
+
+        <div class="booking-field">
+          <label for="{{ form.second_name.id_for_label }}">Second name (optional)</label>
+          {{ form.second_name }}
+          {{ form.second_name.errors }}
+        </div>
+
+        <div class="booking-field">
+          <label for="{{ form.surname.id_for_label }}">Surname *</label>
+          {{ form.surname }}
+          {{ form.surname.errors }}
+        </div>
+      </div>
+
+      <!-- CONTACT ROW -->
+      <div class="booking-row">
+        <div class="booking-field">
+          <label for="{{ form.phone.id_for_label }}">Phone *</label>
+          {{ form.phone }}
+          {{ form.phone.errors }}
+        </div>
+
+        <div class="booking-field">
+          <label for="{{ form.email.id_for_label }}">Email</label>
+          {{ form.email }}
+          {{ form.email.errors }}
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- SERVICE ROW -->
+      <div class="booking-row">
+        <div class="booking-field">
+          <label for="{{ form.service_type.id_for_label }}">Service type *</label>
+          {{ form.service_type }}
+          {{ form.service_type.errors }}
+        </div>
+
+        <div class="booking-field">
+          <label for="{{ form.other_service.id_for_label }}">Other (if selected)</label>
+          {{ form.other_service }}
+          {{ form.other_service.errors }}
+        </div>
+      </div>
+
+      <!-- VEHICLE + DATE/TIME -->
+      <div class="booking-row">
+        <div class="booking-field">
+          <label for="{{ form.vehicle.id_for_label }}">Vehicle</label>
+          {{ form.vehicle }}
+          {{ form.vehicle.errors }}
+        </div>
+
+        <div class="booking-field">
+          <label for="{{ form.booking_date.id_for_label }}">Preferred date</label>
+          {{ form.booking_date }}
+          {{ form.booking_date.errors }}
+        </div>
+
+        <div class="booking-field">
+          <label for="{{ form.preferred_time.id_for_label }}">Preferred time</label>
+          {{ form.preferred_time }}
+          {{ form.preferred_time.errors }}
+        </div>
+      </div>
+
+      <!-- MESSAGE -->
+      <div class="booking-field">
+        <label for="{{ form.message.id_for_label }}">Message / vehicle issue</label>
+        {{ form.message }}
+        {{ form.message.errors }}
+      </div>
+
+      <!-- NOTES -->
+      <div class="booking-field">
+        <label for="{{ form.notes.id_for_label }}">Notes (optional)</label>
+        {{ form.notes }}
+        {{ form.notes.errors }}
+      </div>
+
+      <div class="booking-actions">
+        <a href="{% url 'pages:home' %}" class="btn-secondary btn-back">← Back to Home</a>
+        <button type="submit" class="btn-primary booking-submit">Submit Booking</button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Autonecto Insights{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}?v=10">
+{% endblock %}
+
+{% block content %}
+
+<div class="blog-wrapper fade-in">
+
+    <div class="blog-header">
+        <h1>Autonecto Insights</h1>
+        <p>Professional Automotive Electrical Tips & Industry Knowledge</p>
+    </div>
+
+    {% if posts %}
+        {% with posts.0 as featured %}
+        <div class="featured-post">
+            {% if featured.image %}
+            <div class="featured-image">
+                <img src="{{ featured.image.url }}" alt="{{ featured.title }}">
+            </div>
+            {% endif %}
+
+            <div class="featured-content">
+                <span class="category-badge">
+                    {{ featured.get_category_display }}
+                </span>
+
+                <h2>{{ featured.title }}</h2>
+
+                <p class="featured-date">
+                    {{ featured.created_at|date:"F d, Y" }}
+                </p>
+
+                <p>
+                    {{ featured.content|striptags|truncatewords:35 }}
+                </p>
+
+                <a href="{% url 'crm:blog_detail' featured.slug %}" class="btn-primary">
+                    Read Full Article →
+                </a>
+            </div>
+        </div>
+        {% endwith %}
+
+        <div class="blog-grid">
+
+            {% for post in posts|slice:"1:" %}
+            <div class="blog-card">
+
+                {% if post.image %}
+                <div class="blog-card-image">
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                </div>
+                {% endif %}
+
+                <div class="blog-card-content">
+                    <span class="category-badge small">
+                        {{ post.get_category_display }}
+                    </span>
+
+                    <h3>{{ post.title }}</h3>
+
+                    <p class="blog-card-date">
+                        {{ post.created_at|date:"F d, Y" }}
+                    </p>
+
+                    <p>
+                        {{ post.content|striptags|truncatewords:20 }}
+                    </p>
+
+                    <a href="{% url 'crm:blog_detail' post.slug %}" class="blog-read-btn">
+                        Read →
+                    </a>
+                </div>
+
+            </div>
+            {% endfor %}
+
+        </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}

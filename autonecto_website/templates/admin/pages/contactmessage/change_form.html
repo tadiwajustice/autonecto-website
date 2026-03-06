@@ -1,0 +1,11 @@
+{% extends "admin/change_form.html" %}
+
+{% block submit_buttons_bottom %}
+    {{ block.super }}
+    <div class="submit-row">
+        <input type="submit"
+               value="Send Custom Reply"
+               class="default"
+               name="_send_custom_reply">
+    </div>
+{% endblock %}

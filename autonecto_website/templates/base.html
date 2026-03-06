@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Configuration -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{% block title %}Autonecto Electrics{% endblock %}</title>
+
+  <!-- SEO Metadata -->
+  <meta name="description" content="Autonecto Electrics provides professional auto electrical diagnostics, ECU repair, battery services and mobile auto electrician services in Harare, Zimbabwe.">
+  <meta name="keywords" content="auto electrician Zimbabwe, car diagnostics Harare, ECU repair, mobile auto electrician, battery replacement Zimbabwe">
+  <meta name="author" content="Autonecto Electrics">
+
+  <!-- Open Graph Metadata (Used for Social Media Previews) -->
+  <meta property="og:title" content="Autonecto Electrics">
+  <meta property="og:description" content="Professional Auto-Electrical & Diagnostic Solutions">
+  <meta property="og:image" content="{% static 'images/logoE.jpg' %}">
+  <meta property="og:type" content="website">
+
+  
+  <link rel="icon" href="{% static 'images/logoE.jpg' %}">
+
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="{% static 'css/base.css' %}?v=3">
+
+  <!-- Font Awesome Icon Library -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Page Specific Styles -->
+  {% block extra_css %}{% endblock %}
+
+  
+  <script src="{% static 'js/animations.js' %}" defer></script>
+
+  <!-- Base Layout Styling -->
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #111;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+      padding: 30px 15px;
+      margin-top: 80px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+  {% include 'partials/navbar.html' %}
+
+  
+  {% if messages %}
+  <div class="alert-container">
+      {% for message in messages %}
+          <div class="alert-box">{{ message }}</div>
+      {% endfor %}
+  </div>
+  {% endif %}
+
+  <!-- Main Page Content -->
+  <main>
+      {% block content %}{% endblock %}
+  </main>
+
+
+  {% include 'partials/footer.html' %}
+
+  <!-- Floating WhatsApp Contact Button -->
+  <a href="https://wa.me/263773256199?text=Hello%20Autonecto%20Electrics,%20I%20would%20like%20to%20enquire%20about%20your%20services."
+     class="whatsapp-float"
+     target="_blank"
+     title="Chat with us on WhatsApp">
+
+     <svg xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 32 32"
+          width="28"
+          height="28"
+          fill="white">
+
+       <path d="M16 .396C7.164.396 0 7.56 0 16.396c0 2.837.743 5.607 2.155 8.046L0 32l7.79-2.044a15.93 15.93 0 0 0 8.21 2.243c8.836 0 16-7.164 16-16S24.836.396 16 .396zm0 29.203a13.17 13.17 0 0 1-6.709-1.83l-.48-.287-4.624 1.213 1.233-4.507-.313-.49a13.155 13.155 0 1 1 10.893 5.9zm7.356-9.879c-.403-.202-2.384-1.177-2.753-1.311-.369-.135-.637-.202-.905.202-.268.403-1.04 1.311-1.275 1.579-.235.268-.47.302-.873.101-.403-.202-1.7-.627-3.238-2.001-1.196-1.067-2.002-2.383-2.236-2.786-.235-.403-.025-.621.177-.822.181-.18.403-.47.604-.705.202-.235.268-.403.403-.671.134-.268.067-.503-.034-.705-.101-.202-.905-2.181-1.24-2.987-.327-.787-.659-.681-.905-.693l-.772-.014c-.268 0-.705.101-1.074.503-.369.403-1.409 1.376-1.409 3.355 0 1.979 1.442 3.888 1.644 4.157.202.268 2.84 4.338 6.886 6.081.963.415 1.714.663 2.299.848.965.307 1.844.264 2.538.16.775-.115 2.384-.974 2.72-1.916.335-.943.335-1.752.234-1.916-.101-.164-.369-.268-.772-.47z"/>
+
+     </svg>
+
+  </a>
+
+  <!-- Promotion Countdown Script -->
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+
+      const countdowns = document.querySelectorAll(".countdown");
+
+      countdowns.forEach(function (countdown) {
+
+          const expiryDate = new Date(countdown.dataset.expiry).getTime();
+          const timerElement = countdown.querySelector(".timer");
+
+          const interval = setInterval(function () {
+
+              const now = new Date().getTime();
+              const distance = expiryDate - now;
+
+              if (distance <= 0) {
+                  clearInterval(interval);
+                  const card = countdown.closest(".promotion-card");
+                  if (card) {
+                      card.style.display = "none";
+                  }
+                  return;
+              }
+
+              const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+              const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+              const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+              timerElement.innerHTML =
+                  days + "d " + hours + "h " + minutes + "m";
+
+          }, 1000);
+
+      });
+
+  });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+.service-title-link {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
+    color: #cc2c2c;
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.service-card {
+    text-decoration: none !important;
+}
+
+.service-card:hover .service-title-link {
+    color: #a10e0e;
+}
+
+.services-wrapper {
+    max-width: 1200px;
+    margin: auto;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.services-title {
+    font-size: 38px;
+    font-weight: 800;
+}
+
+.services-sub {
+    font-size: 18px;
+    color: #000;
+    margin-bottom: 25px;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);   
+    gap: 22px;
+    margin-top: 30px;
+}
+
+.service-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(6, 6, 6, 0.1);
+    transition: 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 18px rgba(0,0,0,0.16);
+}
+
+.clean-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    line-height: 1.9;
+    max-width: 340px;
+}
+
+.clean-list li {
+    background: #fafafa;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    font-size: 15.5px;
+    color: #000;
+}
+
+.clean-list li::before {
+    content: "•";
+    color: #cc2c2c;
+    font-size: 20px;
+    margin-right: 7px;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.price-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.price-header {
+    padding: 18px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+}
+
+.silver { background: #737373; }
+.gold { background: #c9a328; }
+.platinum { background: #3b3b98; }
+
+.price-amount {
+    background: #f7f7f7;
+    padding: 15px;
+    font-size: 30px;
+    font-weight: 900;
+    color: #cc2c2c;
+}

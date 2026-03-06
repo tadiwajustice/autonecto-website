@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About — Autonecto Electrics{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<div class="about-wrapper fade-in">
+
+    <h1 class="about-title">About Autonecto Electrics</h1>
+    <p class="about-subtitle">Add more life to your vehicle.</p>
+
+    <hr class="section-divider">
+
+    <section class="about-section fade-in">
+        <h2 class="section-title">Who We Are</h2>
+        <p class="section-text centered">
+            Autonecto Electrics is a mobile auto-electrical and diagnostics company specializing 
+            in computerized vehicle diagnostics, hybrid system checks, and on-site electrical repairs.
+            We bring advanced automotive technology solutions directly to our clients, ensuring fast,
+            professional, and reliable service wherever they are.
+        </p>
+    </section>
+
+    <hr class="section-divider">
+
+    <section class="about-section fade-in">
+        <h2 class="section-title">Our Mission</h2>
+        <p class="section-text centered">
+            To provide professional, technology-driven auto-electrical and diagnostic services 
+            that enhance vehicle performance, reliability, and safety.
+        </p>
+    </section>
+
+    <hr class="section-divider">
+
+    <section class="about-section fade-in">
+        <h2 class="section-title">Our Vision</h2>
+        <p class="section-text centered">
+            To build a network of highly trained mobile technicians across the region,
+            offering advanced diagnostics and maintenance services for both conventional 
+            and hybrid vehicles.
+        </p>
+    </section>
+
+    <hr class="section-divider">
+
+    <section class="about-section fade-in">
+        <h2 class="section-title">Core Values</h2>
+        <ul class="values-list centered-list">
+            <li><strong>Precision First:</strong> Data-driven diagnostics for accuracy.</li>
+            <li><strong>Integrity & Trust:</strong> Honest feedback without unnecessary repairs.</li>
+            <li><strong>Innovation:</strong> Adapting to modern vehicle electronics.</li>
+            <li><strong>Commitment to Safety:</strong> Prevention-focused service.</li>
+            <li><strong>Partnership:</strong> Supporting individuals & businesses.</li>
+            <li><strong>Professionalism:</strong> Certified experts committed to excellence.</li>
+            <li><strong>Customer Empowerment:</strong> Clear explanations, smarter decisions.</li>
+            <li><strong>Mobility & Accessibility:</strong> Service at your home or office.</li>
+        </ul>
+    </section>
+
+    <hr class="section-divider">
+
+    <section class="about-section fade-in">
+        <h2 class="section-title">Services We Offer</h2>
+        <ul class="services-list centered-list">
+            <li><strong>Computerized Vehicle Diagnostics:</strong> Full system scans, fault code analysis.</li>
+            <li><strong>Hybrid & EV Diagnostics:</strong> High-voltage system checks.</li>
+            <li><strong>Mobile Auto Electrical Repairs:</strong> Wiring, alternators, starters.</li>
+            <li><strong>GPS Tracking & Security:</strong> Trackers, alarms, immobilizers.</li>
+            <li><strong>Preventive Maintenance:</strong> Battery testing, vehicle health checks.</li>
+            <li><strong>Fleet Services:</strong> Depot visits, truck diagnostics, electrical maintenance.</li>
+        </ul>
+    </section>
+
+    <hr class="section-divider">
+
+    <section class="map-section fade-in">
+        <h2 class="section-title">Our Location</h2>
+        <p class="section-text centered">17004 Sande Cres, Graniteside, Harare, Zimbabwe</p>
+
+        <div class="map-container">
+            <iframe 
+                width="100%" 
+                height="450" 
+                frameborder="0" 
+                style="border:0; border-radius: 10px;" 
+                src="https://www.google.com/maps?q=17004+Sande+Cres+Graniteside+Harare+Zimbabwe&output=embed"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </section>
+
+</div>
+
+{% endblock %}

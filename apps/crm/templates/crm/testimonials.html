@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Testimonials — Autonecto Electrics{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}?v=7">
+{% endblock %}
+
+{% block content %}
+
+<div class="testimonial-wrapper fade-in">
+    <h1 class="blog-title">Customer Testimonials</h1>
+    <p class="blog-sub">Real reviews from our valued clients</p>
+
+    <div class="testimonial-grid">
+
+        {% for t in testimonials %}
+            <div class="testimonial-card">
+
+                <!-- Star Rating -->
+                <div class="testimonial-stars">
+                    {% for i in "12345" %}
+                        {% if forloop.counter <= t.rating %}
+                            <span class="star filled">★</span>
+                        {% else %}
+                            <span class="star">☆</span>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <p class="testimonial-text">
+                    “{{ t.message }}”
+                </p>
+
+                <!-- SMART AUTHOR DISPLAY -->
+                <div class="testimonial-author">
+
+                    — <strong>{{ t.name }}</strong>
+
+                    {% if t.position and t.company %}
+                        <span class="testimonial-position">
+                            , {{ t.position }} ({{ t.company }})
+                        </span>
+
+                    {% elif t.position %}
+                        <span class="testimonial-position">
+                            , {{ t.position }}
+                        </span>
+
+                    {% elif t.company %}
+                        <span class="testimonial-company">
+                            ({{ t.company }})
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+            {% if not forloop.last %}
+                <div class="testimonial-divider-red"></div>
+            {% endif %}
+
+        {% empty %}
+            <p>No testimonials available yet.</p>
+        {% endfor %}
+
+    </div>
+
+    <!--  RED SECTION BREAK -->
+    <div class="testimonial-section-break">
+        <span>Share Your Feedback & Experience</span>
+    </div>
+
+    <!-- Submission Form -->
+    <div class="testimonial-form-section">
+
+        {% if messages %}
+            {% for message in messages %}
+                <p class="testimonial-success">
+                    {{ message }}
+                </p>
+            {% endfor %}
+        {% endif %}
+
+        <form method="post" class="testimonial-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit" class="testimonial-btn">
+                Submit Testimonial →
+            </button>
+        </form>
+
+        <p class="testimonial-note">
+            Thank you for trusting Autonecto Electrics.
+        </p>
+    </div>
+
+</div>
+
+{% endblock %}

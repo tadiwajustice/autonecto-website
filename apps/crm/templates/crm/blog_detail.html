@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{{ post.title }} | Autonecto Electrics
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}?v=8">
+{% endblock %}
+
+{% block content %}
+
+<div class="blog-detail-wrapper fade-in">
+
+    <div class="blog-back">
+        <a href="{% url 'crm:blog_list' %}" class="btn-back">
+            ← Back to Blog
+        </a>
+    </div>
+
+    <h1 class="blog-detail-title">{{ post.title }}</h1>
+
+    <div class="blog-detail-meta">
+        <span>{{ post.created_at|date:"F d, Y" }}</span>
+        <span class="blog-category">
+            {{ post.get_category_display }}
+        </span>
+    </div>
+
+    {% if post.image %}
+        <div class="blog-detail-image-wrapper">
+            <img src="{{ post.image.url }}" alt="{{ post.title }}">
+        </div>
+    {% endif %}
+
+    <div class="blog-detail-content">
+        {{ post.content|safe }}
+    </div>
+
+
+    <div class="blog-cta">
+        <h3>Need Professional Automotive Electrical Assistance?</h3>
+        <p>Our expert team is ready to help you with diagnostics, repairs and installations.</p>
+
+        <a href="https://wa.me/263773256199?text=Hello%20Autonecto,%20I%20read%20your%20article%20and%20need%20assistance."
+           class="btn-primary"
+           target="_blank">
+           Chat With Us on WhatsApp
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}

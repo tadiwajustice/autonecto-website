@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}All Bookings — Autonecto Electrics{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/booking_list.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="booking-admin-wrapper fade-in">
+
+    <h1 class="booking-list-title">Booking Management</h1>
+
+    <!-- 🔎 SEARCH + FILTER -->
+    <form method="get" class="booking-filter-bar">
+        <input type="text" 
+               name="q" 
+               placeholder="Search by name, phone or service..."
+               value="{{ request.GET.q }}">
+
+        <select name="status">
+            <option value="">All Status</option>
+            <option value="Pending" {% if request.GET.status == "Pending" %}selected{% endif %}>Pending</option>
+            <option value="Confirmed" {% if request.GET.status == "Confirmed" %}selected{% endif %}>Confirmed</option>
+            <option value="Completed" {% if request.GET.status == "Completed" %}selected{% endif %}>Completed</option>
+            <option value="Cancelled" {% if request.GET.status == "Cancelled" %}selected{% endif %}>Cancelled</option>
+        </select>
+
+        <button type="submit" class="btn-primary small-btn">Filter</button>
+    </form>
+
+    {% if bookings %}
+    <div class="table-wrapper">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Customer</th>
+                    <th>Phone</th>
+                    <th>Service</th>
+                    <th>Booking Date</th>
+                    <th>Status</th>
+                    <th>Created</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for b in bookings %}
+                <tr>
+                    <td>
+                        <strong>{{ b.first_name }} {{ b.surname }}</strong>
+                    </td>
+
+                    <td>{{ b.phone }}</td>
+
+                    <td>
+                        {% if b.service_type == "Other" %}
+                            Other: {{ b.other_service }}
+                        {% else %}
+                            {{ b.get_service_type_display }}
+                        {% endif %}
+                    </td>
+
+                    <td>{{ b.booking_date }}</td>
+
+                    <td>
+                        <span class="status-badge status-{{ b.status|lower }}">

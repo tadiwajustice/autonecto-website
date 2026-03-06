@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/booking.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="thank-container fade-in">
+    <h1>Thank You!</h1>
+    <p>Your booking has been successfully submitted.</p>
+
+    <a href="/" class="btn-primary">Return Home</a>
+</div>
+{% endblock %}

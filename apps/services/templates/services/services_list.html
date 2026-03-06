@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Services — Autonecto Electrics{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/services.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="services-wrapper fade-in">
+
+    <!-- MAIN TITLE -->
+    <h1 class="services-title">Our Services</h1>
+    <p class="services-sub">Professional • Mobile • Technology-Driven Automotive Solutions</p>
+
+    <hr class="section-divider">
+
+    <!-- PROFESSIONAL SERVICES -->
+    <h2 class="section-title">Our Professional Services</h2>
+
+    <div class="service-grid">
+
+        <a href="{% url 'services:detail' 1 %}" class="service-card">
+            <h3 class="service-title-link">Computerized Diagnostics</h3>
+            <ul class="clean-list">
+                <li>Full system vehicle scanning</li>
+                <li>ABS, Airbag & Engine analysis</li>
+                <li>Hybrid & EV diagnostics</li>
+            </ul>
+        </a>
+
+        <a href="{% url 'services:detail' 2 %}" class="service-card">
+            <h3 class="service-title-link">Mobile Auto Electrical</h3>
+            <ul class="clean-list">
+                <li>On-site electrical repairs</li>
+                <li>Starter & alternator repairs</li>
+                <li>Fault finding & rewiring</li>
+            </ul>
+        </a>
+
+        <a href="{% url 'services:detail' 3 %}" class="service-card">
+            <h3 class="service-title-link">Preventive Maintenance</h3>
+            <ul class="clean-list">
+                <li>Vehicle health checks</li>
+                <li>Battery & charging diagnostics</li>
+                <li>Component condition testing</li>
+            </ul>
+        </a>
+
+        <a href="{% url 'services:detail' 4 %}" class="service-card">
+            <h3 class="service-title-link">Fleet Diagnostics</h3>
+            <ul class="clean-list">
+                <li>On-site fleet scanning</li>
+                <li>Truck electrical maintenance</li>
+                <li>Fleet performance reporting</li>
+            </ul>
+        </a>
+
+        <a href="{% url 'services:detail' 5 %}" class="service-card">
+            <h3 class="service-title-link">GPS Tracking & Installation</h3>
+            <ul class="clean-list">
+                <li>Tracker device installation</li>
+                <li>Vehicle monitoring setup</li>
+                <li>Anti-theft system integration</li>
+            </ul>
+        </a>
+
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- GPS TRACKER PRICING -->
+    <h2 class="section-title">GPS Tracker Packages</h2>
+
+    <div class="pricing-grid">
+
+        <div class="price-card">
+            <div class="price-header silver">SILVER PACKAGE</div>
+            <ul class="price-features">
+                <li>Basic real-time tracking</li>
+                <li>Route history</li>
+                <li>Mobile app access</li>
+            </ul>
+            <!-- <div class="price-amount">$20 / month</div> -->
+        </div>
+
+        <div class="price-card">
+            <div class="price-header gold">GOLD PACKAGE</div>
+            <ul class="price-features">
+                <li>All Silver features</li>
+                <li>Engine cut-off control</li>
+                <li>Geo-fencing alerts</li>
+                <li>Anti-tamper notifications</li>
+            </ul>
+            <!-- <div class="price-amount">$35 / month</div> -->
+        </div>
+
+        <div class="price-card popular">
+            <div class="price-header platinum">PLATINUM PACKAGE</div>
+            <ul class="price-features">
+                <li>All Gold features</li>
+                <li>Advanced remote monitoring</li>
+                <li>Driver behaviour reports</li>
+                <li>Full fleet dashboard</li>
+            </ul>
+            <!-- <div class="price-amount">$50 / month</div> -->
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

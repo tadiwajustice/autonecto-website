@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ service.title }} — Autonecto Electrics{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/service_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="service-detail-wrapper fade-in">
+
+    <!-- TITLE -->
+    <h1 class="detail-title">{{ service.title }}</h1>
+    <p class="detail-sub">{{ service.description }}</p>
+
+    <hr class="section-divider">
+
+    <!-- FEATURES -->
+    <h2 class="section-title">What’s Included</h2>
+
+    <ul class="detail-list">
+        {% for item in features %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- BACK BUTTON -->
+    <a href="{% url 'services:list' %}" class="detail-back-btn">← Back to Services</a>
+
+</div>
+
+{% endblock %}

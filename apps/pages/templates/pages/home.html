@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Autonecto Electrics — Home{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}?v=3">
+{% endblock %}
+
+{% block content %}
+
+<section class="hero-section">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-container fade-in">
+        <img src="{% static 'images/logoE.jpg' %}" 
+             alt="Autonecto Logo"
+             class="hero-logo">
+
+        <h1 class="hero-title">
+            Professional Auto-Electrical & Diagnostic Solutions
+        </h1>
+
+        <p class="hero-sub">
+            Reliable mobile automotive electrical services. 
+            Fast response. Trusted expertise.
+        </p>
+
+        <a href="/contact/" class="btn-primary hero-btn">
+            Book a Service →
+        </a>
+    </div>
+</section>
+
+<section class="section services-section home-center">
+    <h2 class="section-title">Our Core Services</h2>
+    <p class="section-sub">Precision • Reliability • Mobile Expertise</p>
+
+    <div class="services-preview">
+
+        <div class="service-card">
+            <h3>Auto Electrical Repairs</h3>
+            <p>Complete wiring diagnostics, fault tracing & system restoration.</p>
+        </div>
+
+        <div class="service-card">
+            <h3>Vehicle Diagnostics</h3>
+            <p>Advanced computer scanning for accurate issue detection.</p>
+        </div>
+
+        <div class="service-card">
+            <h3>Battery & Alternator Services</h3>
+            <p>Professional testing, replacement & charging system repair.</p>
+        </div>
+
+    </div>
+
+    <a href="/services/" class="btn-secondary">
+        View All Services →
+    </a>
+</section>
+
+{% if homepage_promotions %}
+<section class="promotion-section">
+    <div class="promotion-container">
+
+        <div class="promotion-header">
+            <h2>Limited Time Promotions</h2>
+            <p>Exclusive automotive service offers available now</p>
+        </div>
+
+        <div class="promotion-grid">
+            {% for promo in homepage_promotions %}
+            <div class="promotion-card">
+
+                {% if promo.expires_at %}
+                <div class="promo-ribbon">
+                    LIMITED TIME
+                </div>
+                {% endif %}
+
+                {% if promo.image %}
+                <img src="{{ promo.image.url }}"
+                     alt="{{ promo.title }}"
+                     class="promotion-image">
+                {% endif %}
+
+                <div class="promotion-body">
+                    <h3>{{ promo.title }}</h3>
+                    <p>{{ promo.excerpt|truncatewords:18 }}</p>
+
+                    {% if promo.expires_at %}
+                    <div class="countdown"
+                         data-expiry="{{ promo.expires_at|date:'Y-m-d H:i:s' }}">
+                        Offer ends in:
+                        <span class="timer">Loading...</span>
+                    </div>
+                    {% endif %}
+
+                    <a href="{% url 'crm:blog_detail' promo.slug %}"
+                       class="btn-white">
+                        View Offer →
+                    </a>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+{% endif %}
+
+
+<section class="testimonials-section home-center">
+    <h2 class="section-title">What Our Clients Say</h2>
+
+    <div class="testimonial-grid">
+        {% for testimonial in testimonials|slice:":3" %}
+        <div class="testimonial-card">
+            <p>"{{ testimonial.message|truncatewords:25 }}"</p>
+            <span>
+                — {{ testimonial.name }} 
+                ({{ testimonial.rating }}★)
+            </span>
+        </div>
+        {% empty %}
+        <div class="testimonial-card">
+            <p>"Fast, professional and reliable service!"</p>
+            <span>— Happy Client</span>
+        </div>
+        {% endfor %}
+    </div>
+
+    <a href="/crm/testimonials/" class="btn-secondary">
+        Read More →
+    </a>
+</section>
+
+{% endblock %}

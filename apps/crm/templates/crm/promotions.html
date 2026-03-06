@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Promotions — Autonecto Electrics{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}?v=12">
+{% endblock %}
+
+{% block content %}
+
+<div class="promo-wrapper fade-in">
+
+    <div class="promo-header">
+        <h1>Current Promotions</h1>
+        <p>Exclusive automotive electrical service offers — limited time only.</p>
+    </div>
+
+    <div class="promo-grid">
+
+        {% for promo in promotions %}
+        <div class="promo-card">
+
+            {% if promo.image %}
+            <div class="promo-image">
+                <span class="promo-ribbon">LIMITED TIME</span>
+                <img src="{{ promo.image.url }}" alt="{{ promo.title }}">
+            </div>
+            {% endif %}
+
+            <div class="promo-content">
+
+                <h2>{{ promo.title }}</h2>
+
+                {% if promo.expires_at %}
+                <div class="promo-expiry">
+                    Offer ends: {{ promo.expires_at|date:"F d, Y - H:i" }}
+                </div>
+
+                <div class="countdown"
+                     data-expiry="{{ promo.expires_at|date:'Y-m-d H:i:s' }}">
+                    ⏳ Time left:
+                    <span class="timer"></span>
+                </div>
+                {% endif %}
+
+                <p>
+                    {{ promo.content|striptags|truncatewords:30 }}
+                </p>
+
+                <a href="{% url 'crm:blog_detail' promo.slug %}"
+                   class="promo-btn">
+                   Claim This Offer →
+                </a>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+            <p>No active promotions at the moment.</p>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<!-- Countdown Script -->
+<script>
+document.querySelectorAll(".countdown").forEach(function(el) {
+    const expiry = new Date(el.dataset.expiry).getTime();
+    const timerSpan = el.querySelector(".timer");
+
+    function updateTimer() {
+        const now = new Date().getTime();
+        const distance = expiry - now;
+
+        if (distance < 0) {
+            el.innerHTML = "Offer expired";
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+        timerSpan.innerHTML = days + "d " + hours + "h " + minutes + "m";
+    }
+
+    updateTimer();
+    setInterval(updateTimer, 60000);
+});
+</script>
+
+{% endblock %}
