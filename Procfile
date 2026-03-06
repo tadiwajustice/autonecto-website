@@ -1,0 +1,1 @@
+web: gunicorn autonecto_website.wsgi
