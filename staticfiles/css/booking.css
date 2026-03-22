@@ -1,0 +1,133 @@
+.booking-page {
+  width: 100%;
+  padding: 50px 20px;
+  background: #f5f5f5;
+}
+
+.booking-card {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.booking-title {
+  font-size: 34px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.booking-sub {
+  text-align: center;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 35px;
+}
+
+.booking-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.booking-row:nth-of-type(2) {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 992px) {
+  .booking-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .booking-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.booking-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.booking-field label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.booking-card input,
+.booking-card select,
+.booking-card textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #d0d0d0;
+  font-size: 15px;
+  transition: 0.2s ease;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.booking-card input:focus,
+.booking-card select:focus,
+.booking-card textarea:focus {
+  border-color: #cc2c2c;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(204,44,44,0.1);
+}
+
+.booking-card textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.booking-card ul.errorlist {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #cc2c2c;
+}
+
+.section-divider {
+  border: 0;
+  height: 2px;
+  background: linear-gradient(to right, #cc2c2c, #ffb300);
+  margin: 40px 0;
+}
+
+.booking-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 35px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.btn-back {
+  padding: 12px 20px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  text-decoration: none;
+  background: #f1f1f1;
+  color: #111;
+  transition: 0.2s ease;
+}
+
+.btn-back:hover {
+  background: #e3e3e3;
+}
+
+.booking-submit {
+  padding: 14px 30px;
+}
